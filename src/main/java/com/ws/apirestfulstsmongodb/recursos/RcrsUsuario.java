@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,5 +29,11 @@ public class RcrsUsuario {
 		List<ODTUsuario> listaODT = lista.stream().map(x -> new ODTUsuario(x)).collect(Collectors.toList());
 //		lista.addAll(Arrays.asList(paula, fernanda));
 		return ResponseEntity.ok().body(listaODT);
+	}
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public ResponseEntity <ODTUsuario> pesquisarId(@PathVariable String id) {		
+		Usuario usuario = srvcUsuario.pesquisarId(id);
+		return ResponseEntity.ok().body(new ODTUsuario(usuario));
 	}
 }
