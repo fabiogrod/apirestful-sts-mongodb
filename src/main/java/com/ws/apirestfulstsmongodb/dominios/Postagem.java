@@ -6,6 +6,8 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.ws.apirestfulstsmongodb.odt.ODTAutor;
+
 @Document
 public class Postagem implements Serializable {
 
@@ -16,11 +18,11 @@ public class Postagem implements Serializable {
 	private Date data;
 	private String titulo;
 	private String corpo;
-	private Usuario autor;
+	private ODTAutor autor;
 	
 	public Postagem() {}
 
-	public Postagem(String id, Date data, String titulo, String corpo, Usuario autor) {
+	public Postagem(String id, Date data, String titulo, String corpo, ODTAutor autor) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -61,11 +63,11 @@ public class Postagem implements Serializable {
 		this.corpo = corpo;
 	}
 	
-	public Usuario getAutor() {
+	public ODTAutor getAutor() {
 		return autor;
 	}
 
-	public void setAutor(Usuario autor) {
+	public void setAutor(ODTAutor autor) {
 		this.autor = autor;
 	}
 
