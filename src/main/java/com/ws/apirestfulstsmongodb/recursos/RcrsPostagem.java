@@ -25,7 +25,7 @@ public class RcrsPostagem {
 		return ResponseEntity.ok().body(postagem);
 	}
 	
-	@RequestMapping(value="/pesquisartitulo", method = RequestMethod.GET)
+	@RequestMapping(value="/findbytitulo", method = RequestMethod.GET)
 	public ResponseEntity < List<Postagem> > findByTitulo(@RequestParam(value="text", defaultValue="") String texto) {				
 		texto = URL.decodificarParam(texto);		
 		List<Postagem> lista = srvcPostagem.findByTitulo(texto);

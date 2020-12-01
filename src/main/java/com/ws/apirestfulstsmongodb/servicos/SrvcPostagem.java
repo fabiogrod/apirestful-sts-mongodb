@@ -21,6 +21,7 @@ import com.ws.apirestfulstsmongodb.servicos.excecoes.ExcecaoObjetoNaoEncontrado;
 	}
 	
 	public List<Postagem> findByTitulo(String texto) {
-		return rptrPostagem.findByTituloContainingIgnoreCase(texto);
+		//return rptrPostagem.findByTituloContainingIgnoreCase(texto);
+		return rptrPostagem.pesquisarTitulo(texto);
 	}
 }
