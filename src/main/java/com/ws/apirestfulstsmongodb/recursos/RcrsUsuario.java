@@ -50,4 +50,10 @@ public class RcrsUsuario {
 		
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity <Void> deletar(@PathVariable String id) {		
+		srvcUsuario.deletar(id);
+		return ResponseEntity.noContent().build();
+	}
 }

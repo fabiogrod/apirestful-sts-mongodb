@@ -32,11 +32,16 @@ import com.ws.apirestfulstsmongodb.servicos.excecoes.ExcecaoObjetoNaoEncontrado;
 		}
 	}
 	
-	public Usuario ODTUsuario (ODTUsuario odtUsuario) {
-		return new Usuario(odtUsuario.getId(), odtUsuario.getNome(), odtUsuario.getEmail());
+	public void deletar(String id) {
+		pesquisarId(id);
+		rptrUsuario.deleteById(id);
 	}
 	
 	public Usuario inserir(Usuario usuario) {
 		return rptrUsuario.insert(usuario);
+	}
+	
+	public Usuario ODTUsuario (ODTUsuario odtUsuario) {
+		return new Usuario(odtUsuario.getId(), odtUsuario.getNome(), odtUsuario.getEmail());
 	}
 }
