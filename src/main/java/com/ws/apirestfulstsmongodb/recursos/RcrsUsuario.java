@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ws.apirestfulstsmongodb.dominios.Postagem;
 import com.ws.apirestfulstsmongodb.dominios.Usuario;
 import com.ws.apirestfulstsmongodb.odt.ODTUsuario;
 import com.ws.apirestfulstsmongodb.servicos.SrvcUsuario;
@@ -63,5 +64,11 @@ public class RcrsUsuario {
 		usuario.setId(id);
 		usuario = srvcUsuario.atualizar(usuario);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value="/{id}/postagens", method = RequestMethod.GET)
+	public ResponseEntity <List<Postagem>> pesquisarPostagens(@PathVariable String id) {		
+		Usuario usuario = srvcUsuario.pesquisarId(id);
+		return ResponseEntity.ok().body(usuario.getPostagens());
 	}
 }
