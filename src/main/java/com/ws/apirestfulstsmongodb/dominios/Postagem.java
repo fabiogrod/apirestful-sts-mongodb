@@ -13,13 +13,12 @@ public class Postagem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	private String id;
+	@Id	private String id;
 	private Date data;
 	private String titulo;
 	private String corpo;
 	private ODTAutor autor;
-	
+		
 	public Postagem() {}
 
 	public Postagem(String id, Date data, String titulo, String corpo, ODTAutor autor) {
@@ -70,7 +69,7 @@ public class Postagem implements Serializable {
 	public void setAutor(ODTAutor autor) {
 		this.autor = autor;
 	}
-
+		
 	@Override
 	public int hashCode() {
 		final int prime = 31;
