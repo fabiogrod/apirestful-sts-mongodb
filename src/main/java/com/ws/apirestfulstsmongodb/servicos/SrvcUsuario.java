@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ws.apirestfulstsmongodb.dominios.Usuario;
+import com.ws.apirestfulstsmongodb.odt.ODTUsuario;
 import com.ws.apirestfulstsmongodb.repositorios.RptrUsuario;
 import com.ws.apirestfulstsmongodb.servicos.excecoes.ExcecaoObjetoNaoEncontrado;
 
@@ -29,5 +30,13 @@ import com.ws.apirestfulstsmongodb.servicos.excecoes.ExcecaoObjetoNaoEncontrado;
 		else {
 			throw new ExcecaoObjetoNaoEncontrado("Objeto não encontrado. Id: " + id);
 		}
+	}
+	
+	public Usuario ODTUsuario (ODTUsuario odtUsuario) {
+		return new Usuario(odtUsuario.getId(), odtUsuario.getNome(), odtUsuario.getEmail());
+	}
+	
+	public Usuario inserir(Usuario usuario) {
+		return rptrUsuario.insert(usuario);
 	}
 }
