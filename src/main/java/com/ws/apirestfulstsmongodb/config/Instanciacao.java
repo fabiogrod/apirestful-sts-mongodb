@@ -19,7 +19,7 @@ public class Instanciacao implements CommandLineRunner{
 		
 		rptrUsuario.deleteAll();
 		
-		Usuario paula = new Usuario( null, "Paula", "maria@gmail.com");
+		Usuario paula = new Usuario( null, "Paula", "paula@gmail.com");
 		Usuario fernanda = new Usuario( null, "Fernanda", "fernanda@gmail.com");
 		Usuario andressa = new Usuario( null, "Andressa", "andressa@gmail.com");
 		

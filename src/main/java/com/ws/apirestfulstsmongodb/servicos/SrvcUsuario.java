@@ -41,6 +41,17 @@ import com.ws.apirestfulstsmongodb.servicos.excecoes.ExcecaoObjetoNaoEncontrado;
 		return rptrUsuario.insert(usuario);
 	}
 	
+	public Usuario atualizar(Usuario usuario) {
+		Usuario novoUsuario = pesquisarId(usuario.getId());
+		atualizarDados(novoUsuario, usuario);
+		return rptrUsuario.save(novoUsuario);
+	}
+	
+	private void atualizarDados(Usuario novoUsuario, Usuario usuario) {
+		novoUsuario.setNome(usuario.getNome());
+		novoUsuario.setEmail(usuario.getEmail());
+	}
+
 	public Usuario ODTUsuario (ODTUsuario odtUsuario) {
 		return new Usuario(odtUsuario.getId(), odtUsuario.getNome(), odtUsuario.getEmail());
 	}

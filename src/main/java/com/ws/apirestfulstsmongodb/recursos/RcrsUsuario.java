@@ -56,4 +56,12 @@ public class RcrsUsuario {
 		srvcUsuario.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity <ODTUsuario> atualizar(@RequestBody ODTUsuario odtUsuario, @PathVariable String id) {		
+		Usuario usuario = srvcUsuario.ODTUsuario(odtUsuario);
+		usuario.setId(id);
+		usuario = srvcUsuario.atualizar(usuario);
+		return ResponseEntity.noContent().build();
+	}
 }
