@@ -1,12 +1,15 @@
 package com.ws.apirestfulstsmongodb.dominios;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.ws.apirestfulstsmongodb.odt.ODTAutor;
+import com.ws.apirestfulstsmongodb.odt.ODTComentario;
 
 @Document
 public class Postagem implements Serializable {
@@ -18,6 +21,8 @@ public class Postagem implements Serializable {
 	private String titulo;
 	private String corpo;
 	private ODTAutor autor;
+	
+	private List<ODTComentario> comentarios =  new ArrayList<>();
 		
 	public Postagem() {}
 
@@ -70,6 +75,14 @@ public class Postagem implements Serializable {
 		this.autor = autor;
 	}
 		
+	public List<ODTComentario> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<ODTComentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
