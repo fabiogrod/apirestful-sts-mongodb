@@ -1,5 +1,6 @@
 package com.ws.apirestfulstsmongodb.recursos;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,19 @@ public class RcrsPostagem {
 	public ResponseEntity < List<Postagem> > findByTitulo(@RequestParam(value="text", defaultValue="") String texto) {				
 		texto = URL.decodificarParam(texto);		
 		List<Postagem> lista = srvcPostagem.findByTitulo(texto);
+		return ResponseEntity.ok().body(lista);
+	}
+	
+	@RequestMapping(value="/pesquisargeral", method = RequestMethod.GET)
+	public ResponseEntity < List<Postagem> > pesquisarGeral(
+			@RequestParam(value="text", defaultValue="") String texto,
+			@RequestParam(value="dataMin", defaultValue="") String dataMin,
+			@RequestParam(value="dataMax", defaultValue="") String dataMax) {				
+		texto = URL.decodificarParam(texto);
+		Date dtMin = URL.converterData(dataMin, new Date(0L));
+		Date dtMax = URL.converterData(dataMax, new Date());
+		
+		List<Postagem> lista = srvcPostagem.pesquisarGeral(texto, dtMin, dtMax);
 		return ResponseEntity.ok().body(lista);
 	}
 }

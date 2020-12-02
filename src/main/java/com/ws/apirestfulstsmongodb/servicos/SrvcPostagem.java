@@ -1,5 +1,6 @@
 package com.ws.apirestfulstsmongodb.servicos;
 
+import java.util.Date;
 import java.util.List;
 //import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -23,5 +24,14 @@ import com.ws.apirestfulstsmongodb.servicos.excecoes.ExcecaoObjetoNaoEncontrado;
 	public List<Postagem> findByTitulo(String texto) {
 		//return rptrPostagem.findByTituloContainingIgnoreCase(texto);
 		return rptrPostagem.pesquisarTitulo(texto);
+	}
+	
+	public List<Postagem> pesquisarGeral(String texto, Date dataMin, Date dataMax) {
+						
+//		dataMax = new Date(dataMax.getTime() + 24 * 60 * 60 * 1000);
+		
+//		System.out.println(dataMax);
+		
+		return rptrPostagem.pesquisarGeral(texto, dataMin, dataMax);
 	}
 }
